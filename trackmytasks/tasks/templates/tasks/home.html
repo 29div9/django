@@ -1,8 +1,15 @@
 {% extends 'tasks/base.html' %}
 {% block content %}
     {% for task in tasks %}
-        <h1>{{task.title}}</h1>
-        <p>Assigned to {{task.assignee}} on {{task.reported_on}}</p>
-        <p>{{task.summary}}</p>
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ task.assignee }}</a>
+              <small class="text-muted">{{ task.reported_on|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ task.title }}</a></h2>
+            <p class="article-content">{{ task.summary }}</p>
+          </div>
+        </article>
     {% endfor %}
 {% endblock content%}
